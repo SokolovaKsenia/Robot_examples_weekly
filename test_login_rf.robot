@@ -2,6 +2,7 @@
 Library  SeleniumLibrary
 Documentation    Suite description
 
+
 *** Variables ***
 ${LOGIN URL}  https://scouts-test.futbolkolektyw.pl/en
 ${BROWSER}  Chrome
@@ -109,8 +110,8 @@ Click on the Sign in button
     Click Element     ${SIGNINBUTTON}
 Assert Dashboard
     Wait Until Element Is Visible     ${DASHBOARDLOGO}
-    Title Should Be    Scouts panel
-    Capture Page Screenshot    alert_signed_in.png
+    Title Should Be     Scouts panel
+    Capture Page Screenshot    screenshot_${TEST NAME}.png
 Click on the language button
     Click Element    ${LANGUAGE}
 Select "Polski"
@@ -119,23 +120,23 @@ Assert Login page in Polish
     Wait Until Element Is Visible    ${LOGINLOGO}
     Title Should Be    Scouts panel - zaloguj
     Element Text Should Be    ${PAGEINPOLISH}    ZALOGUJ
-    Capture Page Screenshot    alert_polish.png
+    Capture Page Screenshot    screenshot_${TEST NAME}.png
 Leave login field empty
     Input Text      ${EMAILINPUT}   ${EMPTY}
 Assert empty login message
     Wait Until Element Is Visible     ${INVALIDLOGINMESSAGE}
     Element Text Should Be    ${INVALIDLOGINMESSAGE}    Please provide your username or your e-mail.
-    Capture Page Screenshot    alert_empty_login.png
+    Capture Page Screenshot    screenshot_${TEST NAME}.png
 Type invalid password
     Input Text    ${PASSWORDINPUT}    Test-1111
 Assert invalid password message
     Wait Until Element Is Visible    ${INVALIDLOGINMESSAGE}
     Element Text Should Be    ${INVALIDLOGINMESSAGE}    Identifier or password invalid.
-    Capture Page Screenshot    alert_invalid_password.png
+    Capture Page Screenshot    screenshot_${TEST NAME}.png
 Check text of the box title by xpath
     Wait Until Element Is Visible    ${LOGINLOGO}
     Element Text Should Be    ${BOXTITLE}    Scouts Panel
-    Capture Page Screenshot    alert_check_element_text.png
+    Capture Page Screenshot    screenshot_${TEST NAME}.png
 Click on Add Player button
     Click Element   ${ADDPLAYERBUTTON}
     Wait Until Element Is Visible    ${ADDPLAYERLOGO}
@@ -155,10 +156,10 @@ Click on the Submit button
 Assert added player in menu
     Wait Until Element Is Visible    ${PLAYERNAMEADDEDINMENU}
     Element Text Should Be    ${PLAYERNAMEADDEDINMENU}    Lionel Messi
-    Capture Page Screenshot    alert_new_player.png
+    Capture Page Screenshot    screenshot_${TEST NAME}.png
 Click on the Sign out button
     Click Element    ${SIGNOUTBUTTON}
 Assert Login page
     Wait Until Element Is Visible   ${LOGINLOGO}
     Title Should Be   Scouts panel - sign in
-    Capture Page Screenshot     alert_login_page.png
+    Capture Page Screenshot     screenshot_${TEST NAME}.png
