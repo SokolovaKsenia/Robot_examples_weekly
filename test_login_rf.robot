@@ -32,134 +32,133 @@ ${PAGEINPOLISH}   xpath=//*[text()='Zaloguj']
 
 
 *** Test Cases ***
-
 Login to the system
-    Open login page
+    Open Login page
     Type in email
     Type in password
     Click on the Sign in button
-    Assert dashboard
+    Assert Dashboard
     [Teardown]  Close Browser
 
 Select polish language
-    Open login page
+    Open Login page
     Click on the language button
     Select "Polski"
-    Assert login page in polish
+    Assert Login Page In Polish
     [Teardown]  Close Browser
 
-Leave Login empty
-    Open login page
+Leave login empty
+    Open Login page
     Leave login field empty
     Type in password
     Click on the Sign in button
-    Assert login page
+    Assert Login page
     Assert empty login message
     [Teardown]      Close Browser
 
-Type in Invalid Password
-    Open login page
+Type in invalid password
+    Open Login page
     Type in email
     Type invalid password
     Click on the Sign in button
-    Assert login page
+    Assert Login page
     Assert invalid password message
     [Teardown]      Close Browser
 
-Add New Player
-    Open login page
+Assert text of the sign in box title
+    Open Login page
+    Check text of the box title by xpath
+    [Teardown]  Close Browser
+
+Add new player
+    Open Login page
     Type in email
     Type in password
     Click on the Sign in button
     Assert Dashboard
     Click on Add Player button
-    Type in name
-    Type in surname
-    Type in date of birth
-    Type in main position
-    Select right leg
+    Type in player's name
+    Type in player's surname
+    Type in player's date of birth
+    Type in player's main position
+    Select player's right leg
     Click on the Submit button
     Assert added player in menu
     [Teardown]      Close Browser
 
-Login out of the site
-    Open login page
+Log out of the site
+    Open Login page
     Type in email
     Type in password
     Click on the Sign in button
     Assert Dashboard
-    Click on Sign out button
+    Click on the Sign out button
     Assert Login page
     [Teardown]      Close Browser
 
-Assert text of the Sign in box title
-    Open login page
-    Check text of the box title by xpath
-    [Teardown]  Close Browser
-
-
 
 *** Keywords ***
-Open login page
+Open Login page
     Open Browser  ${LOGIN URL}  ${BROWSER}
-    Title Should Be    Scouts panel - sign in
+    Title Should Be     Scouts panel - sign in
 Type in email
-    Input Text    ${EMAILINPUT}  user10@getnada.com
+    Input Text    ${EMAILINPUT}     user10@getnada.com
 Type in password
     Input Text    ${PASSWORDINPUT}    Test-1234
 Click on the Sign in button
     Click Element     ${SIGNINBUTTON}
-Assert dashboard
-    wait until element is visible    ${DASHBOARDLOGO}
-    title should be    Scouts panel
-    Capture Page Screenshot  alert_signed_in.png
-Assert Login page
-    wait until element is visible   ${LOGINLOGO}
-    title Should be   Scouts panel - sign in
-    capture page screenshot     alert_login_page.png
-Leave login field empty
-    Input Text      ${EMAILINPUT}   ${EMPTY}
-Assert empty login message
-    wait until element is visible     ${INVALIDLOGINMESSAGE}
-    element text should be     ${INVALIDLOGINMESSAGE}    Please provide your username or your e-mail.
-    capture page screenshot     alert_empty_login.png
-Type invalid password
-    Input Text      ${PASSWORDINPUT}    Test-1111
-Assert invalid password message
-    wait until element is visible   ${INVALIDLOGINMESSAGE}
-    element text should be    ${INVALIDLOGINMESSAGE}     Identifier or password invalid.
-    capture page screenshot     alert_invalid_password.png
-Click on Sign out button
-    Click Element   ${SIGNOUTBUTTON}
+Assert Dashboard
+    Wait Until Element Is Visible     ${DASHBOARDLOGO}
+    Title Should Be    Scouts panel
+    Capture Page Screenshot    alert_signed_in.png
 Click on the language button
     Click Element    ${LANGUAGE}
 Select "Polski"
     Click Element    ${DROPDOWNPOLSKI}
-Assert login page in polish
-    wait until element is visible    ${LOGINLOGO}
-    title should be    Scouts panel - zaloguj
-    element text should be    ${PAGEINPOLISH}  ZALOGUJ
-    Capture Page Screenshot  alert_polish.png
+Assert Login page in Polish
+    Wait Until Element Is Visible    ${LOGINLOGO}
+    Title Should Be    Scouts panel - zaloguj
+    Element Text Should Be    ${PAGEINPOLISH}    ZALOGUJ
+    Capture Page Screenshot    alert_polish.png
+Leave login field empty
+    Input Text      ${EMAILINPUT}   ${EMPTY}
+Assert empty login message
+    Wait Until Element Is Visible     ${INVALIDLOGINMESSAGE}
+    Element Text Should Be    ${INVALIDLOGINMESSAGE}    Please provide your username or your e-mail.
+    Capture Page Screenshot    alert_empty_login.png
+Type invalid password
+    Input Text    ${PASSWORDINPUT}    Test-1111
+Assert invalid password message
+    Wait Until Element Is Visible    ${INVALIDLOGINMESSAGE}
+    Element Text Should Be    ${INVALIDLOGINMESSAGE}    Identifier or password invalid.
+    Capture Page Screenshot    alert_invalid_password.png
+Check text of the box title by xpath
+    Wait Until Element Is Visible    ${LOGINLOGO}
+    Element Text Should Be    ${BOXTITLE}    Scouts Panel
+    Capture Page Screenshot    alert_check_element_text.png
 Click on Add Player button
     Click Element   ${ADDPLAYERBUTTON}
-    wait until element is visible   ${ADDPLAYERLOGO}
-Type in name
-    Input Text   ${PLAYERNAMEFIELD}   Lionel
-Type in surname
-    Input Text    ${PLAYERSURNAMEFIELD}   Messi
-Type in date of birth
+    Wait Until Element Is Visible    ${ADDPLAYERLOGO}
+Type in player's name
+    Input Text    ${PLAYERNAMEFIELD}    Lionel
+Type in player's surname
+    Input Text    ${PLAYERSURNAMEFIELD}    Messi
+Type in player's date of birth
     Input Text    ${PLAYERDATEOFBIRTH}    24/06/1987
-Type in main position
-    Input Text    ${PLAYERMAINPOSITION}   forward
-Select right leg
-    Click Element   ${PLAYERLEGDROPDOWN}
-    Click Element   ${RIGHTLEG}
+Type in player's main position
+    Input Text    ${PLAYERMAINPOSITION}    forward
+Select player's right leg
+    Click Element    ${PLAYERLEGDROPDOWN}
+    Click Element    ${RIGHTLEG}
 Click on the Submit button
-    Click Element   ${SUBMITBUTTON}
+    Click Element    ${SUBMITBUTTON}
 Assert added player in menu
-    wait until element is visible   ${PLAYERNAMEADDEDINMENU}
-    element text should be    ${PLAYERNAMEADDEDINMENU}   Lionel Messi
-    capture page screenshot     alert_new_player.png
-Check text of the box title by xpath
-    element text should be   ${BOXTITLE}    Scouts Panel
-    capture page screenshot     alert_check_element_text.png
+    Wait Until Element Is Visible    ${PLAYERNAMEADDEDINMENU}
+    Element Text Should Be    ${PLAYERNAMEADDEDINMENU}    Lionel Messi
+    Capture Page Screenshot    alert_new_player.png
+Click on the Sign out button
+    Click Element    ${SIGNOUTBUTTON}
+Assert Login page
+    Wait Until Element Is Visible   ${LOGINLOGO}
+    Title Should Be   Scouts panel - sign in
+    Capture Page Screenshot     alert_login_page.png
