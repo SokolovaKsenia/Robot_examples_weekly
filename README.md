@@ -5,4 +5,3 @@
 
 <h3 dir="auto" style="text-align: center;">Robot Framework for Test Automation</h3>
 <p dir="auto" style="text-align: justify;">A robot framework is a tool that allows us to automate the project with just a few lines of commands.</p> 
-<p dir="auto" style="text-align: justify;">This git is dedicated to my attemp to write automated tests using the Robot framework.</p> 
