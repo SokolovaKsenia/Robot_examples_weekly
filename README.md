@@ -1,4 +1,4 @@
-<img src="https://github.com/SokolovaKsenia/Ksu_robotframework/blob/main/readme-banner_2.jpg"/>
+#<img src="https://github.com/SokolovaKsenia/Ksu_robotframework/blob/main/readme-banner_2.jpg"/>
 
 <h2 align="left">Hi there!
 <img src="https://github.com/SokolovaKsenia/challenge_portfolio_KS/blob/main/images/Hi.gif.crdownload" height="32"/></h2>
